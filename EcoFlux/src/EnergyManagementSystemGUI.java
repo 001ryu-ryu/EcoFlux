@@ -47,7 +47,6 @@ public class EnergyManagementSystemGUI extends JFrame {
     }
 
     private void runSimulation() {
-        // Clear previous output.
         outputPane.setText("");
 
         new Thread(() -> {
@@ -63,10 +62,8 @@ public class EnergyManagementSystemGUI extends JFrame {
 
                 Random random = new Random();
 
-                // Create the building with a base daily consumption of 50,000 Wh.
                 Building building = new Building("Green Campus Building", 50000);
 
-                // Create renewable energy sources.
                 SolarPanel solarPanel = new SolarPanel("Solar Panel 1", 10, 0.15, 5);
                 WindTurbine windTurbine = new WindTurbine("Wind Turbine 1", 5, 3);
                 building.addEnergySource(solarPanel);
@@ -85,7 +82,7 @@ public class EnergyManagementSystemGUI extends JFrame {
                         dailyProduction += source.simulateDailyProduction(random);
                     }
 
-                    // Daily consumption: fluctuate between 90% and 110% of the base.
+                    // Consumption fluctuates between 90% and 110%
                     double consumptionVariation = 0.9 + random.nextDouble() * 0.2;
                     double dailyConsumption = building.getEnergyConsumption() * consumptionVariation;
 
@@ -97,7 +94,6 @@ public class EnergyManagementSystemGUI extends JFrame {
                             day, dailyProduction, dailyConsumption, status);
                     appendText(line);
 
-                    // Delay between each day's output (e.g., 500ms).
                     Thread.sleep(300);
                 }
 
