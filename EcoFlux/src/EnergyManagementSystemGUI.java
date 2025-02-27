@@ -16,7 +16,6 @@ public class EnergyManagementSystemGUI extends JFrame {
         setSize(600, 600);
         setLayout(new BorderLayout());
 
-        // Create a JTextPane for simulation output with a terminal-like style.
         outputPane = new JTextPane();
         outputPane.setEditable(false);
         outputPane.setBackground(Color.BLACK);
@@ -24,17 +23,15 @@ public class EnergyManagementSystemGUI extends JFrame {
         outputPane.setFont(new Font("Monospaced", Font.PLAIN, 14));
         centerAlignText(outputPane);
 
-        // Put the text pane in a scroll pane in case output exceeds window size.
         JScrollPane scrollPane = new JScrollPane(outputPane);
         add(scrollPane, BorderLayout.CENTER);
 
-        // Create a button to trigger the simulation at the bottom.
-        runButton = new JButton("Run Simulation");
+        // Button
+        runButton = new JButton("Analyze");
         runButton.addActionListener(e -> runSimulation());
         add(runButton, BorderLayout.SOUTH);
     }
 
-    // Center-align text in the JTextPane.
     private void centerAlignText(JTextPane pane) {
         StyledDocument doc = pane.getStyledDocument();
         SimpleAttributeSet center = new SimpleAttributeSet();
@@ -42,7 +39,6 @@ public class EnergyManagementSystemGUI extends JFrame {
         doc.setParagraphAttributes(0, doc.getLength(), center, false);
     }
 
-    // Append text to the JTextPane on the Event Dispatch Thread (EDT).
     private void appendText(String text) {
         SwingUtilities.invokeLater(() -> {
             outputPane.setText(outputPane.getText() + text + "\n");
@@ -50,16 +46,14 @@ public class EnergyManagementSystemGUI extends JFrame {
         });
     }
 
-    // Runs the simulation with a countdown and gradual, line-by-line output.
     private void runSimulation() {
         // Clear previous output.
         outputPane.setText("");
 
-        // Run in a separate thread so the GUI remains responsive.
         new Thread(() -> {
             try {
                 // Countdown
-                appendText("Running Simulation in 3...");
+                appendText("Presenting Analyzation  in 3...");
                 Thread.sleep(1000);
                 appendText("2...");
                 Thread.sleep(1000);
@@ -84,7 +78,7 @@ public class EnergyManagementSystemGUI extends JFrame {
                 double totalProduction = 0;
                 double totalConsumption = 0;
 
-                // Simulate 30 days, outputting each day's results with a short delay.
+                // Simulation for 30 days
                 for (int day = 1; day <= 30; day++) {
                     double dailyProduction = 0;
                     for (EnergySource source : building.getEnergySources()) {

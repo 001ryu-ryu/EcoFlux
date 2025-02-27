@@ -14,13 +14,12 @@ public class SolarPanel extends EnergySource {
 
     @Override
     public double calculateEnergyOutput() {
-        // Base output: area * efficiency * sunHours * 1000 (W/m²).
         return panelArea * efficiency * sunHours * 1000;
     }
 
     @Override
     public double simulateDailyProduction(Random random) {
-        // Variation: sun hours vary between 80% and 120% of the base value.
+        // Sun hours vary between 80% and 120%
         double variationFactor = 0.8 + random.nextDouble() * 0.4;
         return panelArea * efficiency * (sunHours * variationFactor) * 1000;
     }

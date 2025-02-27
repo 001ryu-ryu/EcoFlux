@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Building {
     private String buildingName;
-    private double energyConsumption; // base daily consumption (Wh)
+    private double energyConsumption;
     private List<EnergySource> energySources;
 
     public Building(String buildingName, double energyConsumption) {
@@ -13,10 +13,12 @@ public class Building {
     }
 
     public String getBuildingName() {
+
         return buildingName;
     }
 
     public double getEnergyConsumption() {
+
         return energyConsumption;
     }
 
@@ -25,6 +27,7 @@ public class Building {
     }
 
     public void addEnergySource(EnergySource source) {
+
         energySources.add(source);
     }
 }
