@@ -61,14 +61,14 @@ public class EnergyManagementSystemGUI extends JFrame {
 
                 Random random = new Random();
 
-                Building building = new Building("Green Campus Building", 50000);
+                Building building = new Building("Campus Building", 50000);
 
                 SolarPanel solarPanel = new SolarPanel("Solar Panel 1", 10, 0.15, 5);
                 WindTurbine windTurbine = new WindTurbine("Wind Turbine 1", 5, 3);
                 building.addEnergySource(solarPanel);
                 building.addEnergySource(windTurbine);
 
-                appendText("Simulating energy production and consumption over 30 days for "
+                appendText("Analyzing energy production and consumption over 30 days for "
                         + building.getBuildingName() + "...\n");
 
                 double totalProduction = 0;
