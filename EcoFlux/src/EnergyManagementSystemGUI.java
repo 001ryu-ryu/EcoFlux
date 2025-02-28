@@ -51,7 +51,6 @@ public class EnergyManagementSystemGUI extends JFrame {
 
         new Thread(() -> {
             try {
-                // Countdown
                 appendText("Presenting Analyzation  in 3...");
                 Thread.sleep(1000);
                 appendText("2...");
@@ -75,7 +74,7 @@ public class EnergyManagementSystemGUI extends JFrame {
                 double totalProduction = 0;
                 double totalConsumption = 0;
 
-                // Simulation for 30 days
+                //Simulation for 30 days
                 for (int day = 1; day <= 30; day++) {
                     double dailyProduction = 0;
                     for (EnergySource source : building.getEnergySources()) {
